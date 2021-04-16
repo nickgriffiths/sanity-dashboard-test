@@ -1,0 +1,43 @@
+{
+  "root": true,
+  "project": {
+    "name": "dashboard-test"
+  },
+  "api": {
+    "projectId": "z29kox1a",
+    "dataset": "dashboard-test"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/dashboard",
+    "@sanity/desk-tool"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    },
+    "production": {
+      "parts": [
+        {
+          "implements": "part:@sanity/dashboard/config",
+          "path": "./config/production/dashboardConfig.js"
+        }
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./config/development/dashboardConfig.js"
+    }
+  ]
+}
